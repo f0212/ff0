@@ -9,7 +9,7 @@ ff0 是一款使用 Go 编写的命令行 FoFa 查询工具，可以对特定资
 
 ## 0x01 下载
 
-点击 [releases](https://github.com/zhangyang9123/ff0/releases/tag/ff0)下载链接 ，按照自己的系统架构选择相应的发行版本下载。
+点击 [releases](https://github.com/zhangyang9123/ff0/releases)下载链接 ，按照自己的系统架构选择相应的发行版本下载。
 
 ## 0x02 配置
 
