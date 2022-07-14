@@ -205,66 +205,77 @@ query_rules_file 文件实例
 **level 1**
 
 ```
-+------------------------------------+-----------------+------+
-|                Host                |       Ip        | Port |
-+------------------------------------+-----------------+------+
-|     https://vod.sdxiehe.edu.cn     | 222.194.130.201 | 443  |
-|     http://www.sdxiehe.edu.cn      | 222.194.130.199 |  80  |
-|     http://vod.sdxiehe.edu.cn      | 222.194.130.201 |  80  |
-|      http://oa.sdxiehe.edu.cn      | 222.194.130.69  |  80  |
-|   http://stu.sdxiehe.edu.cn:8080   | 222.194.130.71  | 8080 |
-| http://nxpbyhyjpsy.sdxiehe.edu.cn  | 222.194.130.118 |  80  |
-|   http://dpstart.sdxiehe.edu.cn    | 222.194.130.13  |  80  |
-|     http://stu.sdxiehe.edu.cn      | 222.194.130.71  |  80  |
-|     http://jlsf.sdxiehe.edu.cn     | 222.194.130.126 |  80  |
-+------------------------------------+-----------------+------+
+
++-------------------------------+----------------+------+
+|             Host              |       Ip       | Port |
++-------------------------------+----------------+------+
+|    http://bos.im.baidu.com    | 220.181.111.68 |  80  |
+|    http://house.baidu.com     | 180.97.34.232  |  80  |
+|   http://apistore.baidu.com   | 103.235.46.238 |  80  |
+|   http://yingxiao.baidu.com   | 110.242.68.230 |  80  |
+|  https://hiphotos.baidu.com   | 103.235.47.66  | 443  |
+| http://trust-static.baidu.com | 112.80.248.190 |  80  |
+|    http://koubei.baidu.com    | 112.80.248.190 |  80  |
+|     https://vcp.baidu.com     |   42.7.43.35   | 443  |
+|  http://nadvideo2.baidu.com   | 101.72.249.35  |  80  |
+|     http://vcp.baidu.com      | 182.84.120.35  |  80  |
+|     https://ww.baidu.com      | 110.242.68.66  | 443  |
+| https://developers.baidu.com  | 112.80.255.42  | 443  |
+|     http://cang.baidu.com     | 110.242.68.150 |  80  |
+|  http://developers.baidu.com  | 112.80.255.42  |  80  |
+|   https://gongyi.baidu.com    | 111.206.209.70 | 443  |
++-------------------------------+----------------+------+
 ```
 
 **level 2**
 
 ```
-+------------------------------------+-----------------+------+----------------+-------------------------------------------+
-|                Host                |       Ip        | Port |     Domain     |                   Title                   |
-+------------------------------------+-----------------+------+----------------+-------------------------------------------+
-|     https://vod.sdxiehe.edu.cn     | 222.194.130.201 | 443  | sdxiehe.edu.cn |         山东协和学院视频点播系统          |
-|     http://www.sdxiehe.edu.cn      | 222.194.130.199 |  80  | sdxiehe.edu.cn |                 302 Found                 |
-|     http://vod.sdxiehe.edu.cn      | 222.194.130.201 |  80  | sdxiehe.edu.cn |                 302 Found                 |
-|      http://oa.sdxiehe.edu.cn      | 222.194.130.69  |  80  | sdxiehe.edu.cn |         协和学院办公平台 V8.0SP1          |
-|       http://sdxiehe.edu.cn        | 222.194.130.199 |  80  | sdxiehe.edu.cn |                 302 Found                 |
-|     http://ids.sdxiehe.edu.cn      | 222.194.130.13  |  80  | sdxiehe.edu.cn |       山东协和学院统一身份认证平台        |
-|    https://mail.sdxiehe.edu.cn     | 222.194.130.203 | 443  | sdxiehe.edu.cn |         山东协和学院电子邮件系统          |
-|      http://my.sdxiehe.edu.cn      | 222.194.130.13  |  80  | sdxiehe.edu.cn |                 302 Found                 |
-|     http://mail.sdxiehe.edu.cn     | 222.194.130.203 |  80  | sdxiehe.edu.cn |                                           |
-|     https://www.sdxiehe.edu.cn     | 222.194.130.199 | 443  | sdxiehe.edu.cn |  山东协和学院 - 教育部批准的普通本科高校  |
-|     http://xhzs.sdxiehe.edu.cn     | 222.194.130.115 |  80  | sdxiehe.edu.cn |                                           |
-|     http://jpkc.sdxiehe.edu.cn     | 222.194.130.208 |  80  | sdxiehe.edu.cn |                 302 Found                 |
-|    https://jpkc.sdxiehe.edu.cn     | 222.194.130.208 | 443  | sdxiehe.edu.cn |          山东协和学院精品课程网           |
-|       dns1.sdxiehe.edu.cn:53       | 222.194.130.198 |  53  | sdxiehe.edu.cn |                                           |
-|       dns.sdxiehe.edu.cn:53        | 222.194.130.198 |  53  | sdxiehe.edu.cn |                                           |
-|        lx.sdxiehe.edu.cn:22        |   52.36.10.21   |  22  | sdxiehe.edu.cn |                                           |
-|     https://waf.sdxiehe.edu.cn     | 222.194.130.251 | 443  | sdxiehe.edu.cn |                             
-+------------------------------------+-----------------+------+----------------+-------------------------------------------+
++-------------------------------+----------------+------+-----------+------------------+
+|             Host              |       Ip       | Port |  Domain   |      Title       |
++-------------------------------+----------------+------+-----------+------------------+
+|    http://bos.im.baidu.com    | 220.181.*.68 |  80  | baidu.com |                  |
+|    http://house.baidu.com     | 180.97.34.232  |  80  | baidu.com |    302 Found     |
+|   http://apistore.baidu.com   | 103.235.46.238 |  80  | baidu.com |                  |
+|   http://yingxiao.baidu.com   | 110.242.68.230 |  80  | baidu.com |                  |
+|  https://hiphotos.baidu.com   | 103.235.47.66  | 443  | baidu.com |  404 Not Found   |
+| http://trust-static.baidu.com | 112.80.248.190 |  80  | baidu.com | 百度商家口碑公告 |
+|    http://koubei.baidu.com    | 112.80.248.190 |  80  | baidu.com |                  |
+|     https://vcp.baidu.com     |   42.7.43.35   | 443  | baidu.com |                  |
+|  http://nadvideo2.baidu.com   | 101.72.249.35  |  80  | baidu.com |                  |
+|     http://vcp.baidu.com      | 182.84.120.35  |  80  | baidu.com |                  |
+|     https://ww.baidu.com      | 110.242.68.66  | 443  | baidu.com |    302 Found     |
+| https://developers.baidu.com  | 112.80.255.42  | 443  | baidu.com |                  |
+|     http://cang.baidu.com     | 110.242.68.150 |  80  | baidu.com |                  |
+|  http://developers.baidu.com  | 112.80.255.42  |  80  | baidu.com |                  |
+|   https://gongyi.baidu.com    | 111.206.209.70 | 443  | baidu.com |                  |
++-------------------------------+----------------+------+-----------+------------------+
+
 
 ```
 
 **level** **3**
 
 ```
-+------------------------------------+-----------------+------+-----------------------+----------------+-------------------------------------------+---------+
-|                Host                |       Ip        | Port |        Server         |     Domain     |                   Title                   | Country |
-+------------------------------------+-----------------+------+-----------------------+----------------+-------------------------------------------+---------+
-|     https://vod.sdxiehe.edu.cn     | 222.194.130.201 | 443  |        Apache         | sdxiehe.edu.cn |         山东协和学院视频点播系统          |   CN    |
-|     http://www.sdxiehe.edu.cn      | 222.194.130.199 |  80  |        Apache         | sdxiehe.edu.cn |                 302 Found                 |   CN    |
-|     http://vod.sdxiehe.edu.cn      | 222.194.130.201 |  80  |        Apache         | sdxiehe.edu.cn |                 302 Found                 |   CN    |
-|      http://oa.sdxiehe.edu.cn      | 222.194.130.69  |  80  |        SY8045         | sdxiehe.edu.cn |         协和学院办公平台 V8.0SP1          |   CN    |
-|       http://sdxiehe.edu.cn        | 222.194.130.199 |  80  |        Apache         | sdxiehe.edu.cn |                 302 Found                 |   CN    |
-|     http://ids.sdxiehe.edu.cn      | 222.194.130.13  |  80  |       openresty       | sdxiehe.edu.cn |       山东协和学院统一身份认证平台        |   CN    |
-|    https://mail.sdxiehe.edu.cn     | 222.194.130.203 | 443  |         nginx         | sdxiehe.edu.cn |         山东协和学院电子邮件系统          |   CN    |
-|      http://my.sdxiehe.edu.cn      | 222.194.130.13  |  80  |       openresty       | sdxiehe.edu.cn |                 302 Found                 |   CN    |
-|     http://mail.sdxiehe.edu.cn     | 222.194.130.203 |  80  |         nginx         | sdxiehe.edu.cn |                                           |   CN    |
-|     https://www.sdxiehe.edu.cn     | 222.194.130.199 | 443  |        Apache         | sdxiehe.edu.cn |  山东协和学院 - 教育部批准的普通本科高校  |   CN    |
-|     http://xhzs.sdxiehe.edu.cn     | 222.194.130.115 |  80  |   Apache-Coyote/1.1   | sdxiehe.edu.cn |   
-+------------------------------------+-----------------+------+-----------------------+----------------+-------------------------------------------+---------+
+
++-------------------------------+----------------+------+-------------------------+-----------+------------------+---------+
+|             Host              |       Ip       | Port |         Server          |  Domain   |      Title       | Country |
++-------------------------------+----------------+------+-------------------------+-----------+------------------+---------+
+|    http://bos.im.baidu.com    | 220.181.111.68 |  80  | Jetty(9.4.14.v20181114) | baidu.com |                  |   CN    |
+|    http://house.baidu.com     | 180.97.34.232  |  80  |         Apache          | baidu.com |    302 Found     |   CN    |
+|   http://apistore.baidu.com   | 103.235.46.238 |  80  |                         | baidu.com |                  |   HK    |
+|   http://yingxiao.baidu.com   | 110.242.68.230 |  80  |                         | baidu.com |                  |   CN    |
+|  https://hiphotos.baidu.com   | 103.235.47.66  | 443  |       JSP3/2.0.14       | baidu.com |  404 Not Found   |   HK    |
+| http://trust-static.baidu.com | 112.80.248.190 |  80  |          nginx          | baidu.com | 百度商家口碑公告 |   CN    |
+|    http://koubei.baidu.com    | 112.80.248.190 |  80  |                         | baidu.com |                  |   CN    |
+|     https://vcp.baidu.com     |   42.7.43.35   | 443  |       JSP3/2.0.14       | baidu.com |                  |   CN    |
+|  http://nadvideo2.baidu.com   | 101.72.249.35  |  80  |          nginx          | baidu.com |                  |   CN    |
+|     http://vcp.baidu.com      | 182.84.120.35  |  80  |       JSP3/2.0.14       | baidu.com |                  |   CN    |
+|     https://ww.baidu.com      | 110.242.68.66  | 443  |      bfe/1.0.8.18       | baidu.com |    302 Found     |   CN    |
+| https://developers.baidu.com  | 112.80.255.42  | 443  |                         | baidu.com |                  |   CN    |
+|     http://cang.baidu.com     | 110.242.68.150 |  80  |         Apache          | baidu.com |                  |   CN    |
+|  http://developers.baidu.com  | 112.80.255.42  |  80  |                         | baidu.com |                  |   CN    |
+|   https://gongyi.baidu.com    | 111.206.209.70 | 443  |    Apache-Coyote/1.1    | baidu.com |                  |   CN    |
++-------------------------------+----------------+------+-------------------------+-----------+------------------+---------+
 
 ```
 
