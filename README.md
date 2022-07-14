@@ -56,17 +56,22 @@ DefaultOutput : data.xlsx
                       ^^^ ^^ ^^^ ^
 
 Usage:
-  [!]./ff0  -q 'host="sdxiehe.edu.cn"' -s 10000 -o data.xlsx
-  [!]./ff0  -f  query_rules_file.txt -s 10000 -o data.xlsx
+  [!]./linux_ff0  -q 'host="sdxiehe.edu.cn"' -s 10000 -o data.xlsx
+  [!]./linux_ff0  -f query_rules_file.txt -s 10000 -o data.xlsx
+
+Options:
   -h, --help
-  -q, --query             参数字符串 (默认: '')
-  -f, --file              批量查询规则文件 (默认: '')
-  -s, --size              到处数据量 (默认: 10000)
-  -e, --is_honeypot       排除蜜罐数据  (仅限FOFA高级会员使用 )
-  -o, --output            输出文件名字 / 绝对路径 (默认: data.xlsx)
-  -g, --grammar           fofa搜索语法帮助表
-  -t, --tip               fofa 搜索关键字提示列表
-  -ih, --iconhash         计算指定 URL favicon icon_hash
+  -q, --query       [string]          参数字符串 (默认: '')
+  -f, --file        [filePath]        批量查询规则文件 (默认: '')
+  -s, --size        [int]             到处数据量 (默认: 10000)
+  -e, --is_honeypot                   排除蜜罐数据  (仅限FOFA高级会员使用 )
+  -o, --output      [string]          输出文件名字 / 绝对路径 (默认: data.xlsx)
+  -g, --grammar                       fofa搜索语法帮助表
+  -t, --tip         [string]          fofa 搜索关键字提示列表
+  -x, --xlsx        [文件路径]        读取生成xlsx文件 (配合 level 参数使用)
+  -l, --level       [1/2/3]               读取文件细粒度 (配合 xlsx 参数使用)
+  -ih, --iconhash   [string]          计算指定 URL favicon icon_hash
+
 
 ```
 
@@ -193,7 +198,77 @@ query_rules_file 文件实例
 
 ## 0x04 资产数据查看
 
-资产查询结束后，会在output文件夹下生成xls文件
+资产查询结束后，会在当前文件夹下生成xlsx文件
+
+可以使用 -x 参数指定查看的 xlxs 资产文件，并配合 -l / --level 参数指定输出细粒度
+
+**level 1**
+
+```
++------------------------------------+-----------------+------+
+|                Host                |       Ip        | Port |
++------------------------------------+-----------------+------+
+|     https://vod.sdxiehe.edu.cn     | 222.194.130.201 | 443  |
+|     http://www.sdxiehe.edu.cn      | 222.194.130.199 |  80  |
+|     http://vod.sdxiehe.edu.cn      | 222.194.130.201 |  80  |
+|      http://oa.sdxiehe.edu.cn      | 222.194.130.69  |  80  |
+|   http://stu.sdxiehe.edu.cn:8080   | 222.194.130.71  | 8080 |
+| http://nxpbyhyjpsy.sdxiehe.edu.cn  | 222.194.130.118 |  80  |
+|   http://dpstart.sdxiehe.edu.cn    | 222.194.130.13  |  80  |
+|     http://stu.sdxiehe.edu.cn      | 222.194.130.71  |  80  |
+|     http://jlsf.sdxiehe.edu.cn     | 222.194.130.126 |  80  |
++------------------------------------+-----------------+------+
+```
+
+**level 2**
+
+```
++------------------------------------+-----------------+------+----------------+-------------------------------------------+
+|                Host                |       Ip        | Port |     Domain     |                   Title                   |
++------------------------------------+-----------------+------+----------------+-------------------------------------------+
+|     https://vod.sdxiehe.edu.cn     | 222.194.130.201 | 443  | sdxiehe.edu.cn |         山东协和学院视频点播系统          |
+|     http://www.sdxiehe.edu.cn      | 222.194.130.199 |  80  | sdxiehe.edu.cn |                 302 Found                 |
+|     http://vod.sdxiehe.edu.cn      | 222.194.130.201 |  80  | sdxiehe.edu.cn |                 302 Found                 |
+|      http://oa.sdxiehe.edu.cn      | 222.194.130.69  |  80  | sdxiehe.edu.cn |         协和学院办公平台 V8.0SP1          |
+|       http://sdxiehe.edu.cn        | 222.194.130.199 |  80  | sdxiehe.edu.cn |                 302 Found                 |
+|     http://ids.sdxiehe.edu.cn      | 222.194.130.13  |  80  | sdxiehe.edu.cn |       山东协和学院统一身份认证平台        |
+|    https://mail.sdxiehe.edu.cn     | 222.194.130.203 | 443  | sdxiehe.edu.cn |         山东协和学院电子邮件系统          |
+|      http://my.sdxiehe.edu.cn      | 222.194.130.13  |  80  | sdxiehe.edu.cn |                 302 Found                 |
+|     http://mail.sdxiehe.edu.cn     | 222.194.130.203 |  80  | sdxiehe.edu.cn |                                           |
+|     https://www.sdxiehe.edu.cn     | 222.194.130.199 | 443  | sdxiehe.edu.cn |  山东协和学院 - 教育部批准的普通本科高校  |
+|     http://xhzs.sdxiehe.edu.cn     | 222.194.130.115 |  80  | sdxiehe.edu.cn |                                           |
+|     http://jpkc.sdxiehe.edu.cn     | 222.194.130.208 |  80  | sdxiehe.edu.cn |                 302 Found                 |
+|    https://jpkc.sdxiehe.edu.cn     | 222.194.130.208 | 443  | sdxiehe.edu.cn |          山东协和学院精品课程网           |
+|       dns1.sdxiehe.edu.cn:53       | 222.194.130.198 |  53  | sdxiehe.edu.cn |                                           |
+|       dns.sdxiehe.edu.cn:53        | 222.194.130.198 |  53  | sdxiehe.edu.cn |                                           |
+|        lx.sdxiehe.edu.cn:22        |   52.36.10.21   |  22  | sdxiehe.edu.cn |                                           |
+|     https://waf.sdxiehe.edu.cn     | 222.194.130.251 | 443  | sdxiehe.edu.cn |                             
++------------------------------------+-----------------+------+----------------+-------------------------------------------+
+
+```
+
+**level** **3**
+
+```
++------------------------------------+-----------------+------+-----------------------+----------------+-------------------------------------------+---------+
+|                Host                |       Ip        | Port |        Server         |     Domain     |                   Title                   | Country |
++------------------------------------+-----------------+------+-----------------------+----------------+-------------------------------------------+---------+
+|     https://vod.sdxiehe.edu.cn     | 222.194.130.201 | 443  |        Apache         | sdxiehe.edu.cn |         山东协和学院视频点播系统          |   CN    |
+|     http://www.sdxiehe.edu.cn      | 222.194.130.199 |  80  |        Apache         | sdxiehe.edu.cn |                 302 Found                 |   CN    |
+|     http://vod.sdxiehe.edu.cn      | 222.194.130.201 |  80  |        Apache         | sdxiehe.edu.cn |                 302 Found                 |   CN    |
+|      http://oa.sdxiehe.edu.cn      | 222.194.130.69  |  80  |        SY8045         | sdxiehe.edu.cn |         协和学院办公平台 V8.0SP1          |   CN    |
+|       http://sdxiehe.edu.cn        | 222.194.130.199 |  80  |        Apache         | sdxiehe.edu.cn |                 302 Found                 |   CN    |
+|     http://ids.sdxiehe.edu.cn      | 222.194.130.13  |  80  |       openresty       | sdxiehe.edu.cn |       山东协和学院统一身份认证平台        |   CN    |
+|    https://mail.sdxiehe.edu.cn     | 222.194.130.203 | 443  |         nginx         | sdxiehe.edu.cn |         山东协和学院电子邮件系统          |   CN    |
+|      http://my.sdxiehe.edu.cn      | 222.194.130.13  |  80  |       openresty       | sdxiehe.edu.cn |                 302 Found                 |   CN    |
+|     http://mail.sdxiehe.edu.cn     | 222.194.130.203 |  80  |         nginx         | sdxiehe.edu.cn |                                           |   CN    |
+|     https://www.sdxiehe.edu.cn     | 222.194.130.199 | 443  |        Apache         | sdxiehe.edu.cn |  山东协和学院 - 教育部批准的普通本科高校  |   CN    |
+|     http://xhzs.sdxiehe.edu.cn     | 222.194.130.115 |  80  |   Apache-Coyote/1.1   | sdxiehe.edu.cn |   
++------------------------------------+-----------------+------+-----------------------+----------------+-------------------------------------------+---------+
+
+```
+
+
 
 ## 0x05 结语
 
