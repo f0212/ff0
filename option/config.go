@@ -15,7 +15,15 @@ type BaseInfo struct {
 }
 
 func (c *BaseInfo) GetConf() *BaseInfo {
-	yamlFile, err := ioutil.ReadFile(".././config.yml")
+	////对文件进行判断
+	//if _, err := os.Stat(".././config.yml"); err != nil {
+	//	if os.IsNotExist(err) {
+	//		// 如果文件不存在
+	//		fp, _ := os.Create(".././config.yml")
+	//		fp.Close()
+	//	}
+	//}
+	yamlFile, err := ioutil.ReadFile("config.yml")
 	if err != nil {
 		fmt.Println(err.Error())
 	}

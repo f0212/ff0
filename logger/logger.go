@@ -1,7 +1,6 @@
 package logger
 
 import (
-	"fmt"
 	"github.com/fatih/color"
 	"math/rand"
 	"os"
@@ -20,14 +19,16 @@ var (
 		"  [!]./fofa  -f query_rules_file.txt -s 10000 -o data.xlsx\n"
 	usageOptions = `Options:
   -h, --help
-  -q, --query             参数字符串 (默认: '')
-  -f, --file              批量查询规则文件 (默认: '')
-  -s, --size              到处数据量 (默认: 10000)
-  -e, --is_honeypot       排除蜜罐数据  (仅限FOFA高级会员使用 ) 
-  -o, --output            输出文件名字 / 绝对路径 (默认: data.xlsx)
-  -g, --grammar           fofa搜索语法帮助表
-  -t, --tip               fofa 搜索关键字提示列表
-  -ih, --iconhash         计算指定 URL favicon icon_hash      
+  -q, --query       [string]          参数字符串 (默认: '')
+  -f, --file        [filePath]        批量查询规则文件 (默认: '')
+  -s, --size        [int]             到处数据量 (默认: 10000)
+  -e, --is_honeypot                   排除蜜罐数据  (仅限FOFA高级会员使用 ) 
+  -o, --output      [string]          输出文件名字 / 绝对路径 (默认: data.xlsx)
+  -g, --grammar                       fofa搜索语法帮助表
+  -t, --tip         [string]          fofa 搜索关键字提示列表
+  -x, --xlsx        [文件路径]	      读取生成xlsx文件 (配合 level 参数使用)
+  -l, --level       [1/2/3]    		  读取文件细粒度 (配合 xlsx 参数使用)
+  -ih, --iconhash   [string]          计算指定 URL favicon icon_hash      
 `
 	fofaGrammar = `
 [+]                Rule                                   Mark               
@@ -105,26 +106,38 @@ func AsciiBanner() {
 }
 
 func Usage() {
-	fmt.Println(usageCommand)
-	fmt.Println(usageOptions)
+	yellow := color.New(color.FgHiYellow)
+	boldyellow := yellow.Add(color.Bold)
+	boldyellow.Println(usageCommand)
+	boldyellow.Println(usageOptions)
 }
 
 func FofaGrammar() {
-	fmt.Println(fofaGrammar)
+	blue := color.New(color.FgBlue)
+	boldblue := blue.Add(color.Bold)
+	boldblue.Println(fofaGrammar)
 }
 
 func Warn(format string, args ...interface{}) {
-	fmt.Fprintf(os.Stderr, pWARN+format+"\n", args...)
+	red := color.New(color.FgRed)
+	boldRed := red.Add(color.Bold)
+	boldRed.Fprintf(os.Stderr, pWARN+format+"\n", args...)
 }
 
 func Info(format string, args ...interface{}) {
-	fmt.Fprintf(os.Stdout, pINFO+format+"\n", args...)
+	red := color.New(color.FgRed)
+	boldRed := red.Add(color.Bold)
+	boldRed.Fprintf(os.Stdout, pINFO+format+"\n", args...)
 }
 
 func Success(format string, args ...interface{}) {
-	fmt.Fprintf(os.Stdout, pSUCCESS+format+"\n", args...)
+	red := color.New(color.FgRed)
+	boldRed := red.Add(color.Bold)
+	boldRed.Fprintf(os.Stdout, pSUCCESS+format+"\n", args...)
 }
 
 func Debug(format string, args ...interface{}) {
-	fmt.Fprintf(os.Stdout, pDEBUG+format+"\n", args...)
+	red := color.New(color.FgRed)
+	boldRed := red.Add(color.Bold)
+	boldRed.Fprintf(os.Stdout, pDEBUG+format+"\n", args...)
 }

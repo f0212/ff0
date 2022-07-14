@@ -7,14 +7,38 @@ import (
 	"fofa/option"
 	"fofa/report"
 	"fofa/utils"
+	"github.com/fatih/color"
+	"io"
 	"os"
 )
+
+func File() string {
+	//对文件进行判断
+	wireteString := "DefaultEmail  : \nDefaultAPIKey : \nDefaultSize   : 10000\nDefaultOutput : data.xlsx"
+	if _, err := os.Stat("config.yml"); err != nil {
+		if os.IsNotExist(err) {
+			// 如果文件不存在
+			fp, _ := os.Create("config.yml")
+			_, _ = io.WriteString(fp, wireteString)
+			fp.Close()
+			return "[*] 已生成配置文件 config.yml"
+		}
+	}
+	return "0"
+}
 
 func main() {
 	logger.InitPlatform()
 	logger.AsciiBanner()
+	a := File()
+	if a != "0" {
+		blue := color.New(color.FgBlue)
+		boldblue := blue.Add(color.Bold)
+		boldblue.Println(a)
+		return
 
-	email, apiKey, query, ruleFile, size, output, err := option.ParseCli(os.Args[1:])
+	}
+	email, apiKey, query, ruleFile, size, output, _, _, err := option.ParseCli(os.Args[1:])
 
 	if err != nil {
 		if err == option.PrintUsage {
@@ -63,7 +87,7 @@ func main() {
 
 	clt.QueryAllT(querys)
 
-	report.WriteXlsx(fetch.FetchResultT.M, "../output/"+output)
+	report.WriteXlsx(fetch.FetchResultT.M, output)
 
 	return
 }

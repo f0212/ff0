@@ -3,6 +3,7 @@ package report
 import (
 	"fmt"
 	"fofa/logger"
+	"github.com/fatih/color"
 	"regexp"
 	"strings"
 
@@ -55,8 +56,9 @@ func formatHost(host string, protocol string) (nhost string) {
 }
 
 func WriteXlsx(fResult map[string][][]string, output string) {
-
-	logger.Info(fmt.Sprintf("结果输出 %v , 等待...", output))
+	blue := color.New(color.FgBlue)
+	boldblue := blue.Add(color.Bold)
+	logger.Info(boldblue.Sprintf("结果输出 %v , 等待...", output))
 
 	f := excelize.NewFile()
 	firstSheet := true
@@ -105,5 +107,5 @@ func WriteXlsx(fResult map[string][][]string, output string) {
 		logger.Warn(err.Error())
 	}
 
-	logger.Success(fmt.Sprintf("成功写入到 %v 。", output))
+	logger.Success(boldblue.Sprintf("成功写入到 %v 。", output))
 }

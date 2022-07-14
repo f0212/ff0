@@ -2,6 +2,7 @@ package option
 
 import (
 	"errors"
+	"fofa/xlsx"
 )
 
 var (
@@ -10,7 +11,9 @@ var (
 	IconHash          = errors.New("IconHash")
 	FofaTip           = errors.New("FofaTip")
 	errorNoQueryFound = errors.New("未找到查询语句或规则文件，必须指定 -q 或 -f 参数。")
+	errorNolevelFound = errors.New("-x 需和 -l 配合使用")
 	Is_honeypot       = "true"
+	errorOver         = errors.New("查询结束")
 )
 
 func ParseCli(args []string) (
@@ -20,13 +23,14 @@ func ParseCli(args []string) (
 	ruleFile string,
 	size string,
 	output string,
+	xlsxs string,
+	level string,
 	err error) {
 	email, apiKey, size, output = Config()
 	if len(args) == 0 {
 		err = PrintUsage
 		return
 	}
-
 	for pos := 0; pos < len(args); pos++ {
 		switch args[pos] {
 		case "-e", "--is_honeypot":
@@ -74,11 +78,35 @@ func ParseCli(args []string) (
 		case "-g", "--grammar":
 			err = PrintGrammar
 			return
+		case "-x", "--xlsx":
+			if pos+1 < len(args) {
+				xlsxs = args[pos+1]
+				pos++
+			}
+		case "-l", "--level":
+			if pos+1 < len(args) {
+				level = args[pos+1]
+				pos++
+			}
 		}
 	}
-
-	if query == "" && ruleFile == "" {
-		err = errorNoQueryFound
+	//全部为空时
+	if xlsxs == "" && level == "" {
+		if query == "" && ruleFile == "" {
+			err = errorNoQueryFound
+			return
+		}
+		return
+	}
+	//读取文件不不全时
+	if xlsxs == "" || level == "" {
+		err = errorNolevelFound
+		return
+	}
+	//读取文件成立时
+	if xlsxs != "" && level != "" {
+		xlsx.Xlsx(xlsxs, level)
+		err = errorOver
 		return
 	}
 
