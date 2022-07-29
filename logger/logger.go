@@ -15,7 +15,7 @@ var (
 	pDEBUG       = "\033[1;34m[-]\033[0m "
 	pSUCCESS     = "\033[1;32m[*]\033[0m "
 	isWin        = false
-	usageCommand = "Usage:\n  [!]./fofa  -q 'host=\"sdxiehe.edu.cn\"' -s 10000 -o data.xlsx\n" +
+	usageCommand = "Usage:\n  [!]./fofa  -q 'host=\"baidu.com\"' -s 10000 -o data.xlsx\n" +
 		"  [!]./fofa  -f query_rules_file.txt -s 10000 -o data.xlsx\n"
 	usageOptions = `Options:
   -h, --help
